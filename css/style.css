@@ -408,10 +408,12 @@ body {
     color: var(--text-muted);
 }
 
-/* RESPONSIVE DESIGN */
+/* ========================================
+   RESPONSIVE DESIGN — GRAND ÉCRAN
+   ======================================== */
 @media (max-width: 768px) {
     .hero-section {
-        flex-direction: column; /* Stacks image below text on smaller screens */
+        flex-direction: column;
         align-items: center;
     }
     .hero-right {
@@ -425,3 +427,167 @@ body {
         gap: 15px;
     }
 }
+
+/* ========================================
+   MOBILE — TOUT SUR UN ÉCRAN, SANS SCROLL
+   ======================================== */
+@media (max-width: 480px) {
+
+    /* Conteneur principal: hauteur fixée à l'écran */
+    html, body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .app-container {
+        height: 100dvh;           /* 100% de la hauteur visible réelle */
+        padding: 12px 14px 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        max-width: 100%;
+    }
+
+    /* === HERO : masquer l'image, garder le texte à gauche === */
+    .hero-section {
+        flex-direction: row;
+        gap: 0;
+        margin-bottom: 8px;
+        flex-shrink: 0;
+    }
+
+    /* Cacher complètement l'image et les panneaux */
+    .hero-right {
+        display: none !important;
+    }
+
+    .hero-left {
+        width: 100%;
+    }
+
+    /* Logo compact */
+    .header {
+        margin-bottom: 6px;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    .logo-icon { margin-bottom: 0; }
+    .logo-icon svg { width: 24px; height: 24px; }
+    .logo-text { font-size: 20px; }
+    .logo-subtext { font-size: 9px; margin-top: 2px; }
+
+    /* Texte hero compact */
+    .hero-text-block {
+        margin-bottom: 6px;
+    }
+    .hero-title { font-size: 13px; }
+    .hero-subtitle { font-size: 14px; margin-bottom: 4px; }
+    .hero-desc { font-size: 10px; margin-bottom: 6px; }
+    .hero-divider { width: 20px; height: 2px; }
+
+    /* Avantages en ligne horizontale */
+    .benefits-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+        max-width: 100%;
+        margin-bottom: 0;
+    }
+    .benefit-item {
+        flex: 1 1 45%;
+        gap: 6px;
+    }
+    .benefit-icon svg { width: 14px; height: 14px; }
+    .benefit-text h3 { font-size: 9px; }
+    .benefit-text p { font-size: 8px; }
+
+    /* === SECTION BAS : formulaire + passes === */
+    .content-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        overflow: hidden;
+    }
+
+    /* Panneau connexion compact */
+    .login-panel {
+        padding: 10px 12px;
+        margin-bottom: 0;
+        border-radius: 10px;
+        flex-shrink: 0;
+    }
+    .panel-title {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+    .input-wrapper {
+        height: 38px;
+        margin-bottom: 8px;
+        border-radius: 6px;
+    }
+    .input-wrapper input { font-size: 12px; }
+    .input-icon { padding: 0 10px; }
+    .input-icon svg { width: 16px; height: 16px; }
+
+    /* Un seul bouton CONNEXION, "Acheter un ticket" caché */
+    .buttons-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-bottom: 8px;
+    }
+    .btn-buy {
+        display: none !important;   /* Masquer "Acheter un ticket" */
+    }
+    .btn {
+        padding: 10px 12px;
+        border-radius: 6px;
+    }
+    .btn-icon svg { width: 18px; height: 18px; }
+    .btn-title { font-size: 12px; }
+    .btn-sub { font-size: 8px; }
+
+    .security-msg { font-size: 9px; gap: 5px; }
+    .security-msg svg { width: 10px; height: 10px; }
+
+    /* Section passes compacte */
+    .passes-section {
+        padding: 10px 12px;
+        margin-bottom: 0;
+        border-radius: 10px;
+        flex: 1;
+        overflow: hidden;
+    }
+    .section-divider {
+        margin-bottom: 8px;
+    }
+    .section-divider span { font-size: 11px; }
+    .passes-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    .pass-card {
+        padding: 8px 10px;
+        border-radius: 8px;
+    }
+    .badge { font-size: 9px; padding: 2px 5px; }
+    .price { font-size: 20px; }
+    .price .currency { font-size: 10px; }
+    .duration-title { font-size: 10px; }
+    .duration-subtitle { font-size: 9px; margin-bottom: 6px; }
+    .features-list li { font-size: 9px; margin-bottom: 4px; gap: 5px; }
+    .features-list li svg { width: 11px; height: 11px; }
+
+    /* Footer ultra compact sur une ligne */
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 6px;
+        flex-shrink: 0;
+    }
+    .footer-item { font-size: 8px; gap: 3px; }
+    .footer-item svg { width: 10px; height: 10px; }
+}
+
