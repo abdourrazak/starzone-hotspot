@@ -246,6 +246,11 @@ html, body {
     color: var(--muted);
     padding-top: 2px;
 }
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
 
 /* ================================
    GRAND ÉCRAN — vue desktop
