@@ -164,7 +164,7 @@ html, body {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 10px 14px;
+    padding: 8px 12px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -173,16 +173,17 @@ html, body {
 
 .passes-title {
     text-align: center;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     position: relative;
+    letter-spacing: 0.5px;
 }
 .passes-title::before, .passes-title::after {
     content: '';
     position: absolute;
     top: 50%;
-    width: 22%;
+    width: 20%;
     height: 1px;
     background: var(--border);
 }
@@ -192,49 +193,102 @@ html, body {
 .passes-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 8px;
     flex: 1;
+    align-items: stretch;
 }
 
+/* Carte compact redesignée */
 .pass-card {
-    background: #040A15;
-    border: 1px solid rgba(27, 99, 255, 0.2);
+    background: linear-gradient(135deg, #060E20 0%, #040A18 100%);
+    border: 1px solid rgba(27, 99, 255, 0.18);
     border-radius: 8px;
-    padding: 10px 12px;
+    padding: 8px 10px;
     display: flex;
     flex-direction: column;
+    gap: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s ease, border-color 0.2s ease;
+}
+.pass-card:active {
+    transform: scale(0.97);
+}
+
+/* Accent barre colorée sur le bord gauche */
+.pass-card.blue-card  { border-left: 3px solid var(--blue); }
+.pass-card.orange-card { border-left: 3px solid var(--orange); }
+
+/* Lueur d'arrière-plan subtile */
+.pass-card.blue-card::before {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: rgba(27, 99, 255, 0.08);
+    pointer-events: none;
+}
+.pass-card.orange-card::before {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 107, 0, 0.08);
+    pointer-events: none;
 }
 
 .pass-top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
+    align-items: center;
+    margin-bottom: 2px;
 }
 
 .badge {
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 800;
-    padding: 3px 6px;
+    padding: 2px 5px;
     border-radius: 3px;
+    letter-spacing: 0.3px;
 }
 .blue-badge   { background: var(--blue); }
 .orange-badge { background: var(--orange); }
 
-.pass-price { font-size: 22px; font-weight: 800; line-height: 1; }
-.pass-price span { font-size: 10px; font-weight: 600; }
+/* Prix + FCFA sur la même ligne */
+.pass-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+.pass-price      { font-size: 20px; font-weight: 900; line-height: 1; }
+.pass-price span { font-size: 9px;  font-weight: 600; color: var(--muted); }
 
-.pass-label  { font-size: 10px; font-weight: 700; margin-bottom: 1px; }
-.pass-label2 { font-size: 9px;  font-weight: 600; margin-bottom: 8px; color: var(--muted); }
+/* Badge ILLIMITÉ compact */
+.pass-unlimited {
+    display: inline-block;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    padding: 1px 5px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+}
+.blue-card  .pass-unlimited { background: rgba(27,99,255,0.2);  color: var(--blue); }
+.orange-card .pass-unlimited { background: rgba(255,107,0,0.2); color: var(--orange); }
 
-.pass-card ul { list-style: none; }
+.pass-card ul { list-style: none; margin: 0; }
 .pass-card li {
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-size: 9px;
+    gap: 4px;
+    font-size: 8px;
     color: var(--muted);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+    line-height: 1.2;
 }
 
 /* --- FOOTER --- */
